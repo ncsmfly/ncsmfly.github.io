@@ -19,13 +19,14 @@
 <style>
 /* ── 색상 · 타이포 토큰 ───────────────────────────────── */
 :root{
-  --ivory:#FAF7F2;      /* 바탕 */
+  --ivory:#FBF9F4;      /* 바탕 */
   --paper:#FFFFFF;      /* 카드 */
-  --beige:#EFE7DB;      /* 면 */
-  --sand:#DCCEBA;       /* 선·테두리 */
-  --taupe:#96897A;      /* 보조 글자 */
-  --ink:#3B352D;        /* 본문 */
-  --ink-soft:#645C51;
+  --beige:#EAE4F3;      /* 면 (연한 보라) */
+  --sand:#D9D0E9;       /* 선·테두리 (연보라) */
+  --taupe:#8D82A6;      /* 보조 글자 (보라) */
+  --navy:#2B3050;       /* 포인트 (네이비) */
+  --ink:#31324A;        /* 본문 (네이비 톤) */
+  --ink-soft:#5B5C77;
 
   --serif:'Gowun Batang', serif;
   --sans:'Noto Sans KR', sans-serif;
@@ -39,7 +40,7 @@
 html{scroll-behavior:smooth}
 
 body{
-  background:#E9E3DA;
+  background:#E4DEEF;
   color:var(--ink);
   font-family:var(--sans);
   font-weight:300;
@@ -55,7 +56,7 @@ body{
   background:var(--ivory);
   min-height:100vh;
   overflow:hidden;
-  box-shadow:0 0 60px rgba(90,75,55,.12);
+  box-shadow:0 0 60px rgba(60,55,95,.14);
 }
 
 section{padding:64px var(--pad)}
@@ -101,12 +102,12 @@ h2{
   align-items:center;justify-content:center;
   gap:6px;
   font-size:11px;letter-spacing:.14em;
-  color:#B0A28E;
+  color:#A79FC0;
   font-family:var(--latin);font-style:italic;
 }
 .frame .hint b{
   font-family:var(--sans);font-weight:400;font-size:11.5px;
-  letter-spacing:0;color:#A3947F;
+  letter-spacing:0;color:#9089B3;
 }
 .r45{aspect-ratio:4/5}
 .r11{aspect-ratio:1/1}
@@ -128,23 +129,20 @@ h2{
   color:var(--taupe);
   padding-left:.34em;
 }
-.hero-names{
-  font-family:var(--serif);
-  font-size:31px;line-height:1.5;
-  letter-spacing:.1em;
-  margin:20px 0 18px;
+.hero-family{
+  display:flex;flex-direction:column;align-items:center;
+  gap:24px;
+  margin-top:30px;
 }
-.hero-names .amp{
-  font-family:var(--latin);
-  font-style:italic;
-  color:var(--taupe);
-  font-size:26px;
-  padding:0 8px;
-  letter-spacing:0;
+.fam-block{text-align:center}
+.fam-and{
+  display:flex;flex-direction:column;align-items:center;
+  gap:11px;
+  font-family:var(--latin);font-style:italic;
+  font-size:18px;color:var(--taupe);
 }
-.hero-venue{
-  font-size:13px;color:var(--ink-soft);
-  letter-spacing:.02em;
+.fam-and::before,.fam-and::after{
+  content:'';width:1px;height:16px;background:var(--sand);
 }
 .rule{
   width:34px;height:1px;background:var(--sand);
@@ -160,18 +158,7 @@ h2{
   letter-spacing:.01em;
 }
 
-/* ── 2. 혼주 · 신랑신부 ──────────────────────────────── */
-.family{
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  align-items:center;
-  gap:4px;
-  text-align:center;
-}
-.family .divider{
-  width:1px;height:78px;background:var(--sand);
-  justify-self:center;
-}
+/* ── 혼주 · 신랑신부 (메인 캡션에 병합됨) ─────────────── */
 .parents{
   font-size:13px;color:var(--taupe);
   line-height:1.8;
@@ -235,7 +222,7 @@ h2{
   padding-bottom:12px;
   letter-spacing:.08em;
 }
-.cal th.sun,.cal td.sun{color:#C09C90}
+.cal th.sun,.cal td.sun{color:#B98FAE}
 .cal td{
   text-align:center;
   font-size:13.5px;
@@ -256,7 +243,7 @@ h2{
   position:absolute;top:50%;left:50%;
   transform:translate(-50%,-50%);
   width:31px;height:31px;border-radius:50%;
-  background:var(--taupe);
+  background:var(--navy);
 }
 .dday{
   text-align:center;
@@ -353,7 +340,7 @@ h2{
 .acct{
   display:flex;align-items:center;justify-content:space-between;
   gap:12px;padding:11px 0;
-  border-top:1px dashed #E3D9C9;
+  border-top:1px dashed #E3DAF0;
 }
 .acct:first-child{border-top:none}
 .acct .info{font-size:13px;color:var(--ink-soft);line-height:1.6}
@@ -379,7 +366,7 @@ h2{
 /* 라이트박스 */
 .lb{
   position:fixed;inset:0;z-index:99;
-  background:rgba(38,33,27,.94);
+  background:rgba(24,24,46,.94);
   display:none;
   align-items:center;justify-content:center;
 }
@@ -387,12 +374,12 @@ h2{
 .lb img{max-width:92%;max-height:80vh;object-fit:contain}
 .lb .x{
   position:absolute;top:18px;right:20px;
-  background:none;border:none;color:#EFE7DB;
+  background:none;border:none;color:#F2EEFA;
   font-size:26px;line-height:1;cursor:pointer;padding:8px;
 }
 .lb .nav{
   position:absolute;top:50%;transform:translateY(-50%);
-  background:none;border:none;color:#EFE7DB;
+  background:none;border:none;color:#F2EEFA;
   font-family:var(--latin);font-size:34px;
   padding:16px;cursor:pointer;
 }
@@ -400,7 +387,7 @@ h2{
 .lb .next{right:2px}
 .lb .count{
   position:absolute;bottom:30px;left:0;right:0;
-  text-align:center;color:#C9BEAC;
+  text-align:center;color:#C7BEDD;
   font-family:var(--latin);font-size:14px;letter-spacing:.2em;
 }
 
@@ -416,8 +403,8 @@ h2{
 }
 .end .share{
   margin-top:30px;
-  border:1px solid var(--taupe);
-  background:none;color:var(--ink-soft);
+  border:1px solid var(--navy);
+  background:none;color:var(--navy);
   font-family:var(--sans);font-weight:300;font-size:12.5px;
   padding:13px 30px;border-radius:2px;cursor:pointer;
 }
@@ -427,7 +414,7 @@ h2{
 .toast{
   position:fixed;left:50%;bottom:34px;
   transform:translateX(-50%) translateY(14px);
-  background:rgba(59,53,45,.93);color:var(--ivory);
+  background:rgba(43,48,80,.93);color:var(--ivory);
   font-size:13px;padding:11px 22px;border-radius:2px;
   opacity:0;pointer-events:none;
   transition:opacity .25s,transform .25s;
@@ -458,41 +445,33 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--taupe);outline-offs
 <header class="hero">
   <figure class="frame">
     <span class="hint"><b>메인 사진</b>세로 3:4</span>
-    <img src="images/main.jpg" alt="신랑 신부 메인 사진" onerror="this.remove()">
+    <img src="images/main01.jpg" alt="신랑 신부 메인 사진" onerror="this.remove()">
   </figure>
 
   <div class="hero-cap">
     <div class="hero-date">2027 . 02 . 13 SAT</div>
-    <div class="hero-names">박승욱<span class="amp">and</span>조혜림</div>
-    <div class="hero-venue">전주 엔타워 베일리홀 · 낮 1시 </div>
+
+    <div class="hero-family">
+      <div class="fam-block">
+        <div class="parents">
+          박상기<span class="dot">·</span>송명숙
+          <span class="role">의 아들</span>
+        </div>
+        <span class="child">승욱</span>
+      </div>
+
+      <div class="fam-and">and</div>
+
+      <div class="fam-block">
+        <div class="parents">
+          조성술<span class="dot">·</span>신성화
+          <span class="role">의 딸</span>
+        </div>
+        <span class="child">혜림</span>
+      </div>
+    </div>
   </div>
 </header>
-
-<!-- ═══ 1. 혼주 · 신랑 신부 ═══════════════════════════ -->
-<section>
-
-
-  <div class="family">
-    <div>
-      <div class="parents">
-        박상기<span class="dot">·</span>송명숙
-        <span class="role">의 아들</span>
-      </div>
-      <span class="child">승욱</span>
-    </div>
-
-    <div class="divider"></div>
-
-    <div>
-      <div class="parents">
-        조성술<span class="dot">·</span>신성화
-        <span class="role">의 딸</span>
-      </div>
-      <span class="child">혜림</span>
-    </div>
-  </div>
-
-</section>
 
 <!-- ═══ 인사말 ═══════════════════════════════════════ -->
 <section class="greeting">
@@ -602,14 +581,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--taupe);outline-offs
   <h2>우리의 순간들</h2>
 
   <div class="gal" id="gallery">
-    <figure class="frame r11"><span class="hint"><b>사진 1</b></span><img src="images/g1.jpg" alt="웨딩 사진 1" onerror="this.remove()"></figure>
-    <figure class="frame r11"><span class="hint"><b>사진 2</b></span><img src="images/g2.jpg" alt="웨딩 사진 2" onerror="this.remove()"></figure>
-    <figure class="frame r11"><span class="hint"><b>사진 3</b></span><img src="images/g3.jpg" alt="웨딩 사진 3" onerror="this.remove()"></figure>
-    <figure class="frame r11"><span class="hint"><b>사진 4</b></span><img src="images/g4.jpg" alt="웨딩 사진 4" onerror="this.remove()"></figure>
-    <figure class="frame r11"><span class="hint"><b>사진 5</b></span><img src="images/g5.jpg" alt="웨딩 사진 5" onerror="this.remove()"></figure>
-    <figure class="frame r11"><span class="hint"><b>사진 6</b></span><img src="images/g6.jpg" alt="웨딩 사진 6" onerror="this.remove()"></figure>
-    <figure class="frame r11"><span class="hint"><b>사진 7</b></span><img src="images/g7.jpg" alt="웨딩 사진 7" onerror="this.remove()"></figure>
-    <figure class="frame r11"><span class="hint"><b>사진 8</b></span><img src="images/g8.jpg" alt="웨딩 사진 8" onerror="this.remove()"></figure>
+    <figure class="frame r11"><span class="hint"><b>사진 1</b></span><img src="images/sub01.jpg" alt="웨딩 사진 1" onerror="this.remove()"></figure>
   </div>
 </section>
 
