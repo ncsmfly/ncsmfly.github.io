@@ -19,14 +19,14 @@
 <style>
 /* ── 색상 · 타이포 토큰 ───────────────────────────────── */
 :root{
-  --ivory:#FBF9F4;      /* 바탕 */
+  --ivory:#FAF7F0;      /* 바탕 */
   --paper:#FFFFFF;      /* 카드 */
-  --beige:#EAE4F3;      /* 면 (연한 보라) */
-  --sand:#D9D0E9;       /* 선·테두리 (연보라) */
-  --taupe:#8D82A6;      /* 보조 글자 (보라) */
-  --navy:#2B3050;       /* 포인트 (네이비) */
-  --ink:#31324A;        /* 본문 (네이비 톤) */
-  --ink-soft:#5B5C77;
+  --beige:#E9EEDE;      /* 면 (베이지) */
+  --sand:#D2DCC0;       /* 선·테두리 (베이지) */
+  --taupe:#7C8A64;      /* 보조 글자 (그린) */
+  --green:#333F2A;      /* 포인트 (진한 그린) */
+  --ink:#383A2E;        /* 본문 */
+  --ink-soft:#5C5F4C;
 
   --serif:'Gowun Batang', serif;
   --sans:'Noto Sans KR', sans-serif;
@@ -40,7 +40,7 @@
 html{scroll-behavior:smooth}
 
 body{
-  background:#E4DEEF;
+  background:#E6E0C9;
   color:var(--ink);
   font-family:var(--sans);
   font-weight:300;
@@ -56,7 +56,7 @@ body{
   background:var(--ivory);
   min-height:100vh;
   overflow:hidden;
-  box-shadow:0 0 60px rgba(60,55,95,.14);
+  box-shadow:0 0 60px rgba(65,75,45,.14);
 }
 
 section{padding:64px var(--pad)}
@@ -102,22 +102,26 @@ h2{
   align-items:center;justify-content:center;
   gap:6px;
   font-size:11px;letter-spacing:.14em;
-  color:#A79FC0;
+  color:#B3AB8C;
   font-family:var(--latin);font-style:italic;
 }
 .frame .hint b{
   font-family:var(--sans);font-weight:400;font-size:11.5px;
-  letter-spacing:0;color:#9089B3;
+  letter-spacing:0;color:#9C9476;
 }
 .r45{aspect-ratio:4/5}
 .r11{aspect-ratio:1/1}
 .r32{aspect-ratio:3/2}
+.r169{aspect-ratio:16/9}
 
 /* ── 1. 메인 ─────────────────────────────────────────── */
 .hero{padding:0;position:relative}
 .hero .frame{
-  aspect-ratio:3/4.15;
+  aspect-ratio:16/9;
   margin:14px 14px 0;
+}
+.hero .frame img{
+  object-fit:contain;
 }
 .hero-cap{
   text-align:center;
@@ -166,8 +170,7 @@ h2{
 }
 .parents .dot{padding:0 4px;color:var(--sand)}
 .role{
-  display:block;font-size:12px;color:var(--taupe);
-  margin-top:3px;
+  font-size:13px;color:var(--taupe);
 }
 .child{
   font-family:var(--serif);
@@ -197,14 +200,16 @@ h2{
 .when-line{
   text-align:center;
   font-family:var(--serif);
-  font-size:20px;letter-spacing:.05em;
-  line-height:1.7;
+  font-weight:700;
+  font-size:29px;letter-spacing:.04em;
+  line-height:1.6;
+  color:var(--ink);
 }
 .when-line small{
   display:block;
-  font-family:var(--sans);font-weight:300;
-  font-size:13px;color:var(--taupe);
-  letter-spacing:.02em;margin-top:8px;
+  font-family:var(--sans);font-weight:500;
+  font-size:17px;color:var(--ink-soft);
+  letter-spacing:.02em;margin-top:12px;
 }
 
 .cal{
@@ -222,7 +227,7 @@ h2{
   padding-bottom:12px;
   letter-spacing:.08em;
 }
-.cal th.sun,.cal td.sun{color:#B98FAE}
+.cal th.sun,.cal td.sun{color:#A3745A}
 .cal td{
   text-align:center;
   font-size:13.5px;
@@ -243,7 +248,7 @@ h2{
   position:absolute;top:50%;left:50%;
   transform:translate(-50%,-50%);
   width:31px;height:31px;border-radius:50%;
-  background:var(--navy);
+  background:var(--green);
 }
 .dday{
   text-align:center;
@@ -340,7 +345,7 @@ h2{
 .acct{
   display:flex;align-items:center;justify-content:space-between;
   gap:12px;padding:11px 0;
-  border-top:1px dashed #E3DAF0;
+  border-top:1px dashed #E8DFC4;
 }
 .acct:first-child{border-top:none}
 .acct .info{font-size:13px;color:var(--ink-soft);line-height:1.6}
@@ -354,19 +359,18 @@ h2{
 }
 .copy:active{background:var(--beige)}
 
-/* ── 7. 갤러리 ───────────────────────────────────────── */
+/* ── 7. 갤러리 (16:9 사진이 세로로 쌓이는 형태) ──────── */
 .gal{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:5px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
 }
 .gal .frame{cursor:pointer}
-.gal .frame:nth-child(1){grid-column:span 2;grid-row:span 2}
 
 /* 라이트박스 */
 .lb{
   position:fixed;inset:0;z-index:99;
-  background:rgba(24,24,46,.94);
+  background:rgba(28,32,20,.94);
   display:none;
   align-items:center;justify-content:center;
 }
@@ -374,12 +378,12 @@ h2{
 .lb img{max-width:92%;max-height:80vh;object-fit:contain}
 .lb .x{
   position:absolute;top:18px;right:20px;
-  background:none;border:none;color:#F2EEFA;
+  background:none;border:none;color:#F5F1E4;
   font-size:26px;line-height:1;cursor:pointer;padding:8px;
 }
 .lb .nav{
   position:absolute;top:50%;transform:translateY(-50%);
-  background:none;border:none;color:#F2EEFA;
+  background:none;border:none;color:#F5F1E4;
   font-family:var(--latin);font-size:34px;
   padding:16px;cursor:pointer;
 }
@@ -387,7 +391,7 @@ h2{
 .lb .next{right:2px}
 .lb .count{
   position:absolute;bottom:30px;left:0;right:0;
-  text-align:center;color:#C7BEDD;
+  text-align:center;color:#D6CFAF;
   font-family:var(--latin);font-size:14px;letter-spacing:.2em;
 }
 
@@ -403,8 +407,8 @@ h2{
 }
 .end .share{
   margin-top:30px;
-  border:1px solid var(--navy);
-  background:none;color:var(--navy);
+  border:1px solid var(--green);
+  background:none;color:var(--green);
   font-family:var(--sans);font-weight:300;font-size:12.5px;
   padding:13px 30px;border-radius:2px;cursor:pointer;
 }
@@ -414,7 +418,7 @@ h2{
 .toast{
   position:fixed;left:50%;bottom:34px;
   transform:translateX(-50%) translateY(14px);
-  background:rgba(43,48,80,.93);color:var(--ivory);
+  background:rgba(56,58,46,.93);color:var(--ivory);
   font-size:13px;padding:11px 22px;border-radius:2px;
   opacity:0;pointer-events:none;
   transition:opacity .25s,transform .25s;
@@ -444,7 +448,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--taupe);outline-offs
      사진이 없으면 자동으로 안내 문구가 보입니다. -->
 <header class="hero">
   <figure class="frame">
-    <span class="hint"><b>메인 사진</b>세로 3:4</span>
+    <span class="hint"><b>메인 사진</b>가로 16:9</span>
     <img src="images/main01.jpg" alt="신랑 신부 메인 사진" onerror="this.remove()">
   </figure>
 
@@ -453,20 +457,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--taupe);outline-offs
 
     <div class="hero-family">
       <div class="fam-block">
-        <div class="parents">
-          박상기<span class="dot">·</span>송명숙
-          <span class="role">의 아들</span>
-        </div>
+        <div class="parents">박상기<span class="dot">·</span>송명숙<span class="role">의 아들</span></div>
         <span class="child">승욱</span>
       </div>
 
       <div class="fam-and">and</div>
 
       <div class="fam-block">
-        <div class="parents">
-          조성술<span class="dot">·</span>신성화
-          <span class="role">의 딸</span>
-        </div>
+        <div class="parents">조성술<span class="dot">·</span>신성화<span class="role">의 딸</span></div>
         <span class="child">혜림</span>
       </div>
     </div>
@@ -577,11 +575,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--taupe);outline-offs
      images/g1.jpg ~ g6.jpg 를 넣으면 됩니다.
      사진을 누르면 크게 볼 수 있습니다. -->
 <section>
-  <span class="marker">gallery</span>
-
-
   <div class="gal" id="gallery">
-    <figure class="frame r11"><span class="hint"><b>사진 1</b></span><img src="images/sub01.jpg" alt="웨딩 사진 1" onerror="this.remove()"></figure>
+    <figure class="frame r169"><span class="hint"><b>사진 1</b>가로 16:9</span><img src="images/sub01.jpg" alt="웨딩 사진 1" onerror="this.remove()"></figure>
   </div>
 </section>
 
@@ -589,7 +584,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--taupe);outline-offs
 <!-- ═══ 맺음말 ═══════════════════════════════════════ -->
 <footer class="end">
   <p class="thanks">
-  
+    저희의 시작을<br>
+    함께해 주셔서 감사합니다.
   </p>
   <div class="rule"></div>
   <button class="share" type="button" id="shareBtn">청첩장 링크 공유하기</button>
